@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<style type="text/css">
+			
+			* {
+				margin:0px;
+				padding:0px;
+			}
+			
+			#header {
+				width:500px;
+				font-family:Arial, Helvetica, sans-serif;
+			}
+			
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:left;
+			}
+			
+			.nav li a {
+				background-color:#000;
+				color:#fff;
+				text-decoration:none;
+				padding:10px 12px;
+				display:block;
+			}
+			
+			.nav li a:hover {
+				background-color:#434343;
+			}
+			
+			.nav li ul {
+				display:none;
+				position:absolute;
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:relative;
+			}
+			
+			.nav li ul li ul {
+				right:-450px;
+				top:0px;
+        background-color:#08a1e8;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<ul class="nav">
+				<li><a href="">Productos</a>
+					<ul class="Productos">
+						<li *ngFor="let Products of Listados"
+            [class.selected]="Products === selectedLista"
+            (click)="onSelect(Products)">
+            <span class="badge"></span> {{Products.name}}
+              <ul>
+                <div *ngIf="Products.name">
+                  <h2>DETALLES DE {{ Products.name | uppercase }}</h2>
+                  <div><span>id: </span>{{Products.id}}</div>
+                  <div><span>Precio: </span>{{Products.price}}</div>
+                  <div><span>Nombre: </span>{{Products.name}}</div>
+                </div>
+              </ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
